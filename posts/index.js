@@ -21,7 +21,8 @@ app.post("/posts", async (req, res) => {
         id, title
     }
     // raise an event
-    await axios.post('http://localhost:4005/events', {
+    // using clusterip service to send data
+    await axios.post('http://event-bus-srv:4005/events', {
         type: 'PostCreated',
         data: {
             id, title
